@@ -10,7 +10,11 @@
   <body>
     <div class="row">
       <div class="col"></div>
-      <div class="col-5"><%= yield %></div>
+      <div class="col-5">
+        <%= render 'layouts/header' %>
+        <%= yield %>
+        <%= render 'layouts/navigator' %>
+      </div>
       <div class="col"></div>
       </div>
   </body>
