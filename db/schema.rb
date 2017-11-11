@@ -10,7 +10,49 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171111184550) do
+ActiveRecord::Schema.define(version: 20171111204540) do
+
+  create_table "comments", force: :cascade do |t|
+    t.integer "post_id"
+    t.integer "user_id"
+    t.string "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_comments_on_post_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "echos", force: :cascade do |t|
+    t.integer "post_id"
+    t.integer "comment_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["comment_id"], name: "index_echos_on_comment_id"
+    t.index ["post_id"], name: "index_echos_on_post_id"
+    t.index ["user_id"], name: "index_echos_on_user_id"
+  end
+
+  create_table "metoos", force: :cascade do |t|
+    t.integer "post_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_metoos_on_post_id"
+    t.index ["user_id"], name: "index_metoos_on_user_id"
+  end
+
+  create_table "missions", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "missions_users", id: false, force: :cascade do |t|
+    t.integer "mission_id"
+    t.integer "user_id"
+    t.index ["mission_id"], name: "index_missions_users_on_mission_id"
+    t.index ["user_id"], name: "index_missions_users_on_user_id"
+  end
 
   create_table "posts", force: :cascade do |t|
     t.text "content"

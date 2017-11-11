@@ -1,0 +1,21 @@
+<h1>내용</h1>
+<div class="">
+  <%= @post.content %>
+</div>
+
+<h1>나도!</h1>
+    <div class="likebox">
+      <%= link_to post_metoos_path(@post),method: "post" do %>
+        <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+      <% end %>
+      <%= @post.metoos.size%>명이 좋아합니다.<br/>
+    </div>
+
+<h1>울림</h1>
+  <div class="likebox">
+    <%= link_to post_echo_path(@post),method: "post" do %>
+      <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+    <% end %>
+    <%= @post.echos.size%>명이 좋아합니다.<br/>
+  </div>
+<h1>공유</h1>
