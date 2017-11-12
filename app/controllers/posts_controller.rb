@@ -5,6 +5,8 @@ class PostsController < ApplicationController
     @post.save
     redirect_to root_path
   end
+  def index
+  end  
   def show
     @post = Post.find(params[:id])
   end
